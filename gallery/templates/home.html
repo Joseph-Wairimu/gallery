@@ -4,28 +4,33 @@
 {% block content %}   
 {% for news_item in images %}
 
-<div class="row">
-    <div class="container-fluid">
+  
 
-        <div class="card" style="width: 18rem;">
-            <h4 class="list-group-item" > <span style="color: #874356;">Category~</span>{{ news_item.category }}</h4>
-            <img src="{{news_item.image.url}}" class="card-img-top" alt="Image">
-            <div class="card-body">
-            <h5 class="card-title" style="color: aliceblue;"> <span style="color: #874356;">Name:</span>{{ news_item.name }}</h5>
-            <p class="card-text" style="color: aliceblue; "> <span style="color: #874356;">Description:</span>{{ news_item.description }}</p>
-            </div>
-            <ul class="list-group list-group-flush">
-            <li class="list-group-item" > <span style="color: #874356;">Posted on~</span> {{ news_item.date }}</li>
-            <li class="list-group-item"> <span style="color: #874356;">Author~</span>{{ news_item.author }} </li>
-            
-            </ul>
-        </div>
-
-    </div>
-     
-
-
+  <div class="card-row">
+    <div class="card  " style="width: 18rem;">
+           
+        <h4 class="list-group-item"  > <span style="color: #874356;">Category~</span>{{ news_item.category }}</h4>
+        <img src="{{news_item.image.url}}" class="card-img-top" alt="Image">
+       
+        <h5 class="card-title" style="color: aliceblue;"> <span style="color: #874356;">Name:</span>{{ news_item.name }}</h5>
+        <p class="card-text" style="color: aliceblue; "> <span style="color: #874356;">Description:</span>{{ news_item.description }}</p>
+       
+       
+        <li class="list-group-item" > <span style="color: #874356;">Posted on~</span> {{ news_item.date }}</li>
+        <li class="list-group-item"> <span style="color: #874356;">Author~</span>{{ news_item.author }} </li>
+        
+  
+   
+   
 </div>
+  </div>
+       
+   
+  
+    
+
+
+
 {% empty %}
 <div class="row">
   <h2 class="text-center">There No Gallery Items</h2>
@@ -38,10 +43,16 @@ body{
     background-color: #F7E2E2;
 }
 .card{  
-    display: inline-block;
+
 margin: 1rem;
 background-color: black;
-min-width: 200px;
+text-align: center;
+
+}
+.card-row{
+    width: 80%;   /* products take up 80% of page leaving room for other components */
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>
 {%endblock%}
