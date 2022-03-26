@@ -2,11 +2,12 @@
 
 
 {% block content %}   
+<div class="card-row">
 {% for news_item in images %}
 
   
 
-  <div class="card-row">
+ 
     <div class="card  " style="width: 18rem;">
            
         <h4 class="list-group-item"  > <span style="color: #874356;">Category~</span>{{ news_item.category }}</h4>
@@ -18,12 +19,31 @@
        
         <li class="list-group-item" > <span style="color: #874356;">Posted on~</span> {{ news_item.date }}</li>
         <li class="list-group-item"> <span style="color: #874356;">Author~</span>{{ news_item.author }} </li>
-        
-  
-   
+        <input class="form-control input-lg" type="text" value="{{news_item.image.url}}"
+        id="{{news_item.id}}.url">
+        <button  onclick="myFunction()">
+          Copy Image link
+        </button>
+      
+   <script>
+          function myFunction() {
+        /* Get the text field */
+        var copyText = document.getElementById("{{news_item.id}}.url");
+
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(copyText.value);
+
+        /* Alert the copied text */
+        alert("Copied the text: " + copyText.value);
+      }
+   </script>
    
 </div>
-  </div>
+
        
    
   
@@ -36,7 +56,7 @@
   <h2 class="text-center">There No Gallery Items</h2>
 </div>
 {% endfor %}
-
+</div>
 
 <style> 
 body{
@@ -50,7 +70,7 @@ text-align: center;
 
 }
 .card-row{
-    width: 80%;   /* products take up 80% of page leaving room for other components */
+    width: 80%;  
   display: flex;
   flex-wrap: wrap;
 }

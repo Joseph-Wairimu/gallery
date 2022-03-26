@@ -4,9 +4,9 @@
 
   <div class="row">
     {% if articles%}
-      <h2>Found {{ articles|length }} of searched term {{message}}</h2>
+      <h4>Found {{ articles|length }} of searched term {{message}}</h4>
     {% else %}
-      <h2> Found 0 articles for the search term {{message}}</h2>
+      <h4> Found 0 articles for the search term {{message}}</h4>
     {% endif %}
 
   </div>
@@ -15,9 +15,23 @@
 
   {% if articles %}
     {% for article in articles %}
-      <div class="col-sm-6 col-md-3">
-          <h1>{{article.name}}</h1>
-      </div>
+    <div class="card  " style="width: 18rem;">
+           
+        <h4 class="list-group-item"  > <span style="color: #874356;">Category~</span>{{article.category }}</h4>
+        <img src="{{article.image.url}}" class="card-img-top" alt="Image">
+       
+        <h5 class="card-title" style="color: aliceblue;"> <span style="color: #874356;">Name:</span>{{ article.name }}</h5>
+        <p class="card-text" style="color: aliceblue; "> <span style="color: #874356;">Description:</span>{{article.description }}</p>
+       
+       
+        <li class="list-group-item" > <span style="color: #874356;">Posted on~</span> {{ article.date }}</li>
+        <li class="list-group-item"> <span style="color: #874356;">Author~</span>{{ article.author }} </li>
+        
+  
+   
+   
+</div>
+    
     {% endfor %}
   {% endif %}
   </div>
