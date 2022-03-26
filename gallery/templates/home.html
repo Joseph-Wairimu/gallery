@@ -19,11 +19,14 @@
        
         <li class="list-group-item" > <span style="color: #874356;">Posted on~</span> {{ news_item.date }}</li>
         <li class="list-group-item"> <span style="color: #874356;">Author~</span>{{ news_item.author }} </li>
-        <input class="form-control input-lg" type="text" value="{{news_item.image.url}}"
-        id="{{news_item.id}}.url">
-        <button  onclick="myFunction()">
-          Copy Image link
-        </button>
+        <div class="d-flex">
+          <input class="form-control input-lg in" type="text" value="{{news_item.image.url}}"
+          id="{{news_item.id}}.url">
+          <button class="btn-info"  onclick="myFunction()">
+            Copy 
+          </button>
+        </div>
+     
       
    <script>
           function myFunction() {
@@ -59,8 +62,16 @@
 </div>
 
 <style> 
+.in{
+  width: 14.5rem;
+  background-color: black;
+  color: aliceblue;
+  font-weight: 300;
+}
+
 body{
     background-color: #F7E2E2;
+   
 }
 .card{  
 
