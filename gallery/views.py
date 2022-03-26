@@ -9,8 +9,8 @@ def welcome(request):
 
 def search_results(request):
 
-    if 'image' in request.GET and request.GET["image"]:
-        category = request.GET.get("image")
+    if 'category' in request.GET and request.GET["category"]:
+        category = request.GET.get("category")
         searched_articles = Image.search_by_category( category)
         message = f"{ category}"
 
