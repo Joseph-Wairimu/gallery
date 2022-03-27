@@ -4,7 +4,7 @@
 ## Created By Joseph Kamore Wairimu on 27-03-2022
 ## Design
 
-![app](media/gallery/doc.jg)
+![app](media/gallery/pic.png)
 
 
 ## Description
