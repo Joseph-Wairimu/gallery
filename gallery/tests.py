@@ -30,21 +30,9 @@ class CategoryTestClass(TestCase):
         new_category = Category.objects.filter(name='category').update(name='new_category')
         categories = Category.objects.all()
         self.assertTrue(categories[0].name=='new_category')
-    #testing get_category_by_id method
-    def test_get_category_by_id(self):
-        self.category.save_category()
-        category = Category.get_category_by_id(self.category.id)
-        self.assertTrue(category.name=='category')
-    #testing get_category_by_name method
-    def test_get_category_by_name(self):
-        self.category.save_category()
-        category = Category.get_category_by_name(self.category.name)
-        self.assertTrue(category.name=='category')
-    #testing get_all_categories method
-    def test_get_all_categories(self):
-        self.category.save_category()
-        categories = Category.get_all_categories()
-        self.assertTrue(len(categories)>0)
+   
+ 
+
 
 
 class ImageTestClass(TestCase):
@@ -68,30 +56,10 @@ class ImageTestClass(TestCase):
         images = Image.objects.all()
         self.assertTrue(len(images)==0)
     #testing update method
-   
-    #testing get_image_by_id method
-    def test_get_image_by_id(self):
+    def test_update_method(self):
         self.image.save_image()
-        image = Image.get_image_by_id(self.image.id)
-        self.assertTrue(image.name=='image')
-    #testing get_image_by_name method
-    def test_get_image_by_name(self):
-        self.image.save_image()
-        image = Image.get_image_by_name(self.image.name)
-        self.assertTrue(image.name=='image')
-    #testing get_all_images method
-    def test_get_all_images(self):
-        self.image.save_image()
-        images = Image.get_all_images()
-        self.assertTrue(len(images)>0)
-    #testing get_image_by_category method
-    def test_get_image(self):
-        self.image.save_image()
-        images = Image.get_image_by_category(self.category.id)
-        self.assertTrue(len(images)>0)
-    #testing get_image_by_category method
-    def test_get_image_by_category(self):
-        self.image.save_image()
-        images = Image.get_image_by_category(self.category.id)
-        self.assertTrue(len(images)>0)
-    
+        new_image = Image.objects.filter(name='image').update(name='new_image')
+        images = Image.objects.all()
+        self.assertTrue(images[0].name=='new_image')
+
+  
