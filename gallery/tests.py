@@ -7,38 +7,91 @@ from django.test import TestCase
 
 
 class CategoryTestClass(TestCase):
-
-    # Set up method
+    #set up method
     def setUp(self):
-        self.james= Category(name = 'school')
-# Testing  instance
+        self.category = Category(name='category')
+    #testing instance
     def test_instance(self):
-        self.assertTrue(isinstance(self.james,Category))
-
-      # Testing Save Method
+        self.assertTrue(isinstance(self.category,Category))
+    #testing save method
     def test_save_method(self):
-        self.james.save_editor()
-        editors =Category.objects.all()
-        self.assertTrue(len(editors) > 0)   
+        self.category.save_category()
+        categories = Category.objects.all()
+        self.assertTrue(len(categories)>0)
+    #testing delete method
+    def test_delete_method(self):
+        self.category.save_category()
+        self.category.delete_category()
+        categories = Category.objects.all()
+        self.assertTrue(len(categories)==0)
+    #testing update method
+    def test_update_method(self):
+        self.category.save_category()
+        new_category = Category.objects.filter(name='category').update(name='new_category')
+        categories = Category.objects.all()
+        self.assertTrue(categories[0].name=='new_category')
+    #testing get_category_by_id method
+    def test_get_category_by_id(self):
+        self.category.save_category()
+        category = Category.get_category_by_id(self.category.id)
+        self.assertTrue(category.name=='category')
+    #testing get_category_by_name method
+    def test_get_category_by_name(self):
+        self.category.save_category()
+        category = Category.get_category_by_name(self.category.name)
+        self.assertTrue(category.name=='category')
+    #testing get_all_categories method
+    def test_get_all_categories(self):
+        self.category.save_category()
+        categories = Category.get_all_categories()
+        self.assertTrue(len(categories)>0)
+
 
 class ImageTestClass(TestCase):
-
+    #set up method
     def setUp(self):
-        # Creating a new editor and saving it
-        self.james= Category(first_name = 'James', last_name ='Muriuki', email ='james@moringaschool.com')
-        self.james.save_editor()
-
-        # Creating a new tag and saving it
-        self.new_tag = Image(name = 'testing')
-        self.new_tag.save()
-
-        self.new_article= Category(title = 'Test Article',post = 'This is a random test Post',editor = self.james)
-        self.new_article.save()
-
-        self.new_article.tags.add(self.new_tag)
-
-    def tearDown(self):
-       Image.objects.all().delete()
-       Category.objects.all().delete()
-      
-  
+        self.category = Category(name='category')
+        self.category.save_category()
+        self.image = Image(name='image',description='description',category=self.category)
+    #testing instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.image,Image))
+    #testing save method
+    def test_save_method(self):
+        self.image.save_image()
+        images = Image.objects.all()
+        self.assertTrue(len(images)>0)
+    #testing delete method
+    def test_delete_method(self):
+        self.image.save_image()
+        self.image.delete_image()
+        images = Image.objects.all()
+        self.assertTrue(len(images)==0)
+    #testing update method
+   
+    #testing get_image_by_id method
+    def test_get_image_by_id(self):
+        self.image.save_image()
+        image = Image.get_image_by_id(self.image.id)
+        self.assertTrue(image.name=='image')
+    #testing get_image_by_name method
+    def test_get_image_by_name(self):
+        self.image.save_image()
+        image = Image.get_image_by_name(self.image.name)
+        self.assertTrue(image.name=='image')
+    #testing get_all_images method
+    def test_get_all_images(self):
+        self.image.save_image()
+        images = Image.get_all_images()
+        self.assertTrue(len(images)>0)
+    #testing get_image_by_category method
+    def test_get_image(self):
+        self.image.save_image()
+        images = Image.get_image_by_category(self.category.id)
+        self.assertTrue(len(images)>0)
+    #testing get_image_by_category method
+    def test_get_image_by_category(self):
+        self.image.save_image()
+        images = Image.get_image_by_category(self.category.id)
+        self.assertTrue(len(images)>0)
+    
