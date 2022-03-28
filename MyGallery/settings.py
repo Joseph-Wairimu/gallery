@@ -155,13 +155,17 @@ USE_TZ = True
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
   
+# cloudinary.config(
+#     cloud_name=config('CLOUDINARY_CLOUD_NAME'),
+#     api_key=config('CLOUDINARY_API_KEY'),
+#     api_secret=config('CLOUDINARY_API_SECRET'),
+#     secure=True
+# )
 cloudinary.config(
-    cloud_name=config('CLOUDINARY_CLOUD_NAME'),
-    api_key=config('CLOUDINARY_API_KEY'),
-    api_secret=config('CLOUDINARY_API_SECRET'),
-    secure=True
+  cloud_name = "dxeahbkr4",
+  api_key = "396168366874715",
+  api_secret = "3p_fOBiWkCn1ZZ0C-URaBeJxzDI"
 )
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
